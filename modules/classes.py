@@ -5,10 +5,18 @@ class pokemon:
     def __init__(self, name, hp, breed, powers):
         self.name = name
         self.hp = hp
+        self.maxhp = hp
         self.breed = breed
         self.powers = powers
 
     def about_me(self):
-        print("This is "+self.name+" of classsification "+self.breed)
+        print("______________________________________")
+        print("This is "+self.name+" of type "+self.breed)
         print("It has health points of "+str(self.hp))
-        print("\n")
+        print("--------------------------------------")
+
+    def take_dmg(self,dmg):
+        self.hp -= dmg
+
+    def heal(self,dmg):
+        self.hp += dmg

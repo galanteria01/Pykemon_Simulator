@@ -2,6 +2,6 @@ import random
 
 
 class spells:
-    def __init__(self, name, ap):
+    def __init__(self, name, atk):
         self.name = name
-        self.ap = ap
+        self.atk = atk

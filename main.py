@@ -48,4 +48,43 @@ if choice == "":
         default_pykemon = onix
     elif choose == 4:
         default_pykemon = venusaur
-    print("You have selected "+default_pykemon.name+" as your first pykemon..Lets begin the journey")
+    print("You have selected "+ default_pykemon.name+" as your first pykemon..Lets begin the journey")
+    player_collect = [default_pykemon]
+    running = True
+
+    while running:
+        n = random.randrange(0,4)
+        enemy = pykemons[n]
+
+        print("On way you encountered with "+enemy.name)
+        print("If you wish to fight enter 'yes' or else if you want to run enter 'no'.")
+        battle_choice = input().lower()
+        if battle_choice == 'yes':
+            # Stats of both player & enemy
+            print(default_pykemon.name+" has health stats of "+str(default_pykemon.hp)+"/"+str(default_pykemon.maxhp))
+            print(enemy.name+" has health stats of "+str(enemy.hp)+"/"+str(enemy.maxhp))
+
+            # Player attacks
+            for i in range(0,3):
+                print("_____________________")
+                print(str(i+1),default_pykemon.powers[i].name)
+            player_choice = int(input()) + 1
+            if player_choice == 1 or player_choice ==2:
+                enemy_damage = default_pykemon.powers[player_choice].atk
+                enemy.take_dmg(enemy_damage)
+                print("The "+default_pykemon.name+" has dealth damage of "+str(enemy_damage)+" to "+enemy.name)
+            elif player_choice == 3:
+                player_heal = default_pykemon.powers[player_choice].atk
+                default_pykemon.heal(player_heal)
+
+            # Enemy attacks
+            print("___________________________")
+            enemy_choice = random.randrange(1,4)
+            if enemy_choice == 1 or enemy_choice == 2:
+                player_damage = enemy.powers[player_choice].atk
+                enemy.take_dmg(player_damage)
+                print("The " + enemy.name + " has dealth damage of " + str(player_damage) + " to " + default_pykemon.name)
+            elif player_choice == 3:
+                enemy_heal = enemy.powers[enemy_choice].atk
+                enemy.heal(enemy_heal)
+
