@@ -17,6 +17,10 @@ class pokemon:
 
     def take_dmg(self,dmg):
         self.hp -= dmg
+        if self.hp < 0:
+            self.hp = 0
 
     def heal(self,dmg):
         self.hp += dmg
+        if self.hp > self.maxhp:
+            self.hp = self.maxhp
